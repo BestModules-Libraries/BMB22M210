@@ -1,16 +1,24 @@
 <div align=center>
-<img src="https://github.com/BestModules-Libraries/img/blob/main/BML36M001_V1.0.png" width="240" height="240"> 
+<img src="https://github.com/BestModules-Libraries/img/blob/main/BMB22M210_V1.0.png" width="480" height="240"> 
 </div> 
 
 
-BML36M001 
+BMB22M210 
 ===========================================================
 
-The Best Modules BML36M001 is a laser ranging module, which uses the I2C communication method. This document provides the description of the BML36M001 Arduino Lib functions and how to install the Arduino Lib. The example demonstrates the function of ranging.
+The Best Modules BMB22M210 is an UART expansion module, which uses the UART communication method. This document provides the description of the BMB22M210 Arduino Lib functions and how to install the Arduino Lib. The example demonstrates the function of sub-serial port communication.
 
+#### Applicable types:
+<div align=center>
 
+|Part No.   |Description                   |
+|:---------:|:----------------------------:|
+|BMB22M210   |UART expansion module|
+|BMB22T101  |Communication expansion board|
 
-This library can be installed via the Arduino Library manager. Search for **BML36M001**. 
+</div> 
+
+This library can be installed via the Arduino Library manager. Search for **BMB22M210**. 
 
 Repository Contents
 -------------------
@@ -23,7 +31,7 @@ Repository Contents
 Documentation 
 -------------------
 
-* **[BML36M001 Arduino Library V1.0.1 Description v100]( https://www.bestmodulescorp.com/bml36m001.html#tab-product2 )** - Arduino Library Description.
+* **[BMB22M210 Arduino Library V1.0.1 Description v100]( https://www.bestmodulescorp.com/bmb22m210.html#tab-product2 )** - Arduino Library Description.
 
 Version History  
 -------------------
