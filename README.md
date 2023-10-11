@@ -40,7 +40,7 @@ Version History
 &emsp;&emsp;- Initial public release.
 * **V1.0.2**  
 &emsp;&emsp;- Add functions: getFifoStatus() 、getInterruptFlag() 、setTxFifoInterrupt() 、setRxFifoInterrupt();  
-&emsp;&emsp;- Add example:ServosRun.
+&emsp;&emsp;- Add example:ServoRun.
 
 License Information
 -------------------
