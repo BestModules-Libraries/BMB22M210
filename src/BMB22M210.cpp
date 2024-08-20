@@ -1,8 +1,8 @@
 /*********************************************
 File:           BMB22M210.CPP
-Author:         BESTMODULES
+Author:         BEST MODULES CORP.
 Description:    Function realization
-Version:        V1.0.2   -- 2023-09-14
+Version:        V1.0.3   -- 2024-08-20
 **********************************************/
 
 #include"BMB22M210.h"
@@ -12,8 +12,8 @@ Description: constructed function,HW Serial
 Parameters: intPin: interrupt pin
             theSerial：HW serial port
             Note:BMduino UNO can choice &Serial、&Serial1~4
-Return:  
-Others: 
+Return:     none
+Others:     none
 **********************************************************/
 BMB22M210::BMB22M210(uint8_t intPin,HardwareSerial *theSerial)
 {
@@ -24,8 +24,8 @@ BMB22M210::BMB22M210(uint8_t intPin,HardwareSerial *theSerial)
 /**********************************************************
 Description: initial module
 Parameters:baud：Communication baud rate of development board and module
-Return:
-Others: 
+Return:    void
+Others:    none
 **********************************************************/
 void BMB22M210::begin(uint32_t baud)
 {
@@ -44,8 +44,8 @@ void BMB22M210::begin(uint32_t baud)
 Description: initial module，only use on BMB22T101
 Parameters: baud：Communication baud rate of development board and module
             resetPin：reset Pin,BMB22T101——reset Pin = D2
-Return:
-Others: 
+Return:     void
+Others:     none
 **********************************************************/
 void BMB22M210::begin(uint32_t baud,uint8_t rstPin)
 {
@@ -84,8 +84,8 @@ Parameters: port： sub serial port(1~4)
               13——MYSERIAL_8E2
               14——MYSERIAL_811
               15——MYSERIAL_812
-Return:  
-Others: 
+Return:     void
+Others:     none
 **********************************************************/
 void BMB22M210::beginPort(uint8_t port,uint32_t baud,uint8_t config)
 {
@@ -124,8 +124,8 @@ Parameters: port： sub serial port(1~4)
                    1 tx disable,rx enable
                    2 rx disable,tx enable
                    3 all enable
-Return:  
-Others: 
+Return:   void
+Others:   none
 **********************************************************/
 void BMB22M210::setPortStatus(uint8_t port,PORTSTATUS status)
 {
@@ -150,8 +150,8 @@ void BMB22M210::setPortStatus(uint8_t port,PORTSTATUS status)
 Description: send one byte data
 Parameters: port： sub serial port(1~4)  
             data:  Eight bit data
-Return:  
-Others: 
+Return:   void
+Others:   none
 **********************************************************/
 void BMB22M210::write(uint8_t port,uint8_t data)
 {
@@ -178,7 +178,7 @@ Description: receivr one byte data
 Parameters: port： sub serial port(1~4)  
 Return:  0~255:data
             -1:rx FIFO is empty
-Others: 
+Others: none
 **********************************************************/ 
 int BMB22M210::read(uint8_t port) 
 { 
@@ -271,8 +271,8 @@ Description: write fifo data
 Parameters: port： sub serial port(1~4)
             buff[]：Eight bit FIFO array
             num：Number of arrays written（1~16）
-Return:   
-Others: 
+Return:   void
+Others:   none
 **********************************************************/
 void BMB22M210::writeBytes(uint8_t port,uint8_t buff[],uint8_t num)
 {
@@ -297,8 +297,8 @@ Description: read fifo data
 Parameters: port： sub serial port(1~4) 
             buff[]：Eight bit FIFO array
             num：Number of arrays written（1~16）
-Return:
-Others: 
+Return:  void
+Others:  none
 **********************************************************/
 void BMB22M210::readBytes(uint8_t port,int buff[],uint8_t num)
 {
@@ -328,7 +328,7 @@ void BMB22M210::readBytes(uint8_t port,int buff[],uint8_t num)
 Description: query fifo quantity(receive)
 Parameters: port： sub serial port(1~4)  
 Return:  data quantity(0~255)
-Others: 
+Others:  none
 **********************************************************/ 
 uint8_t BMB22M210::available(uint8_t port) 
 {
@@ -365,8 +365,8 @@ uint8_t BMB22M210::available(uint8_t port)
 /**********************************************************
 Description: reset sub serial port
 Parameters:  port:1/2/3/4
-Return:  
-Others: 
+Return:  void
+Others:  none
 **********************************************************/
 void BMB22M210::resetPort(uint8_t port)
 {
@@ -389,10 +389,48 @@ void BMB22M210::resetPort(uint8_t port)
 }
 
 /**********************************************************
+Description: query fifo quantity(TX)
+Parameters: port： sub serial port(1~4)  
+Return:  data quantity(0~255)
+Others:  none
+**********************************************************/ 
+uint8_t getTxFifoNum(uint8_t port) 
+{
+    uint8_t va = 0;
+    unsigned char fifo = 0;
+    
+    if((port>=1)&&(port<=4))
+    {
+        va = availableReadSReg(port,0x09);
+        if(va > 0)
+         {
+             return va;
+         }
+        else 
+        {
+            fifo = availableReadSReg(port,0x0b);
+            fifo >>=2;
+            if(fifo & 0x01)
+            {
+                return 255;
+            }
+            else
+            {
+                return 0;
+            }
+        }
+    }
+    else
+    {
+      return 0;
+    }
+}
+
+/**********************************************************
 Description: Fifo Status
 Parameters: port： sub serial port(1`4)  
 Return:  Fifo Status       
-Others: 
+Others:  none
 **********************************************************/
 uint8_t BMB22M210::getFifoStatus(uint8_t port)
 {
@@ -409,7 +447,7 @@ uint8_t BMB22M210::getFifoStatus(uint8_t port)
 Description: Gets the subserial port interrupt flag
 Parameters: port： sub serial port(1`4)  
 Return:  InterruptFlag      
-Others: 
+Others:  none
 **********************************************************/
 uint8_t BMB22M210::getInterruptFlag(uint8_t port)
 {
@@ -427,8 +465,8 @@ uint8_t BMB22M210::getInterruptFlag(uint8_t port)
 Description: set Tx Fifo Interrupt
 Parameters: port： sub serial port(1`4)  
             data quantity(0~255) 
-Return:         
-Others: 
+Return:     void     
+Others:     none
 **********************************************************/
 void BMB22M210::setTxFifoInterrupt(uint8_t port,uint8_t data)
 {
@@ -444,8 +482,8 @@ void BMB22M210::setTxFifoInterrupt(uint8_t port,uint8_t data)
 Description: set Rx Fifo Interrupt
 Parameters: port： sub serial port(1`4)  
             data quantity(0~255) 
-Return:         
-Others:
+Return:     void     
+Others:     none
 **********************************************************/
 void BMB22M210::setRxFifoInterrupt(uint8_t port,uint8_t data)
 {
@@ -461,7 +499,7 @@ void BMB22M210::setRxFifoInterrupt(uint8_t port,uint8_t data)
 Description: read main serial register value
 Parameters: greg: main serial register address 
 Return:  main register value 
-Others: 
+Others:  none
 **********************************************************/
 int BMB22M210::readGReg(uint8_t greg)
 {
@@ -489,8 +527,8 @@ int BMB22M210::readGReg(uint8_t greg)
 Description: write main serial register value
 Parameters: greg:main serial register address  
             datg:main serial register value to  be written 
-Return:   
-Others: 
+Return:     void
+Others:     none
 **********************************************************/
 void BMB22M210::writeGReg(uint8_t greg,uint8_t datg)
 { 
@@ -508,8 +546,8 @@ Description: write sub serial register value
 Parameters: port:sub serial port(1~4)
             sreg:sub serial register address
             dats: sub serial register value to be written 
-Return:   
-Others: 
+Return:     void
+Others:     none
 **********************************************************/
 void BMB22M210::writeSReg(uint8_t port,uint8_t sreg,uint8_t dats)
 { 
@@ -527,7 +565,7 @@ Description: read sub serial register value
 Parameters: port:sub serial port(1~4) 
             sreg:sub serial register address  
 Return:   sub serial register value
-Others: 
+Others:   none
 **********************************************************/
 int BMB22M210::readSReg(uint8_t port,uint8_t sreg)
 {  
@@ -554,7 +592,7 @@ Description: read sub serial register value,only available() use
 Parameters: port:sub serial port(1~4) 
             sreg:sub serial register address  
 Return:   sub serial register value
-Others: 
+Others:   none
 **********************************************************/
 int BMB22M210::availableReadSReg(uint8_t port,uint8_t sreg)
 {  
@@ -572,8 +610,8 @@ int BMB22M210::availableReadSReg(uint8_t port,uint8_t sreg)
 Description: set sub serial ports baud
 Parameters: port:sub serial port(1~4)
             baud:sub serial baud(4800/9600/14400/19200/38400/115200/230400)
-Return:  
-Others: 
+Return:     void
+Others:     none
 **********************************************************/
 void BMB22M210::setPortBaud(uint8_t port,uint32_t  baud)
 { 

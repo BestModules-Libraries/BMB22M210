@@ -1,8 +1,8 @@
 /*********************************************
 File:           BMB22M210.h
-Author:         BESTMODULES
+Author:         BEST MODULES CORP.
 Description:    Define classes and required variables
-Version:        V1.0.2   -- 2023-09-14
+Version:        V1.0.3   -- 2024-08-20
 **********************************************/
 #ifndef BMB22M210_H_
 #define BMB22M210_H_

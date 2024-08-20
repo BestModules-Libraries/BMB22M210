@@ -31,7 +31,7 @@ Repository Contents
 Documentation 
 -------------------
 
-* **[BMB22M210 Arduino Library V1.0.1 Description v100]( https://www.bestmodulescorp.com/bmb22m210.html#tab-product2 )** - Arduino Library Description.
+* **[BMB22M210 Arduino Library Description]( https://www.bestmodulescorp.com/bmb22m210.html#tab-product2 )** - Arduino Library Description.
 
 Version History  
 -------------------
@@ -41,6 +41,8 @@ Version History
 * **V1.0.2**  
 &emsp;&emsp;- Add functions: getFifoStatus() 、getInterruptFlag() 、setTxFifoInterrupt() 、setRxFifoInterrupt();  
 &emsp;&emsp;- Add example:ServoRun.
+* **V1.0.3**  
+&emsp;&emsp;- Add functions: getTxFifoNum();  
 
 License Information
 -------------------
@@ -49,8 +51,8 @@ This product is _**open source**_!
 
 Please review the LICENSE.md file for license information. 
 
-If you have any questions or concerns on licensing, please contact technical support on our BESTMODULES Email:service@bestmodulescorp.com
+If you have any questions or concerns on licensing, please contact technical support on our BEST MODULES CORP. Email:service@bestmodulescorp.com
 
 Distributed as-is; no warranty is given.
 
-BESTMODULES
+BEST MODULES CORP.
