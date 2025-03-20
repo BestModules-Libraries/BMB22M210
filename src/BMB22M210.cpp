@@ -2,7 +2,7 @@
 File:           BMB22M210.CPP
 Author:         BEST MODULES CORP.
 Description:    Function realization
-Version:        V1.0.3   -- 2024-08-20
+Version:        V1.0.4   -- 2025-03-20
 **********************************************/
 
 #include"BMB22M210.h"
@@ -394,7 +394,7 @@ Parameters: port： sub serial port(1~4)
 Return:  data quantity(0~255)
 Others:  none
 **********************************************************/ 
-uint8_t getTxFifoNum(uint8_t port) 
+uint8_t BMB22M210::getTxFifoNum(uint8_t port) 
 {
     uint8_t va = 0;
     unsigned char fifo = 0;

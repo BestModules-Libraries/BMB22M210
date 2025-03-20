@@ -2,7 +2,7 @@
 File:           BMB22M210.h
 Author:         BEST MODULES CORP.
 Description:    Define classes and required variables
-Version:        V1.0.3   -- 2024-08-20
+Version:        V1.0.4   -- 2025-03-20
 **********************************************/
 #ifndef BMB22M210_H_
 #define BMB22M210_H_

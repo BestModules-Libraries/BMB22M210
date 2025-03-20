@@ -43,6 +43,8 @@ Version History
 &emsp;&emsp;- Add example:ServoRun.
 * **V1.0.3**  
 &emsp;&emsp;- Add functions: getTxFifoNum();  
+* **V1.0.4**  
+&emsp;&emsp;- Fix the "getTxFifoNum" function in the .cpp document to ensure its proper use;  
 
 License Information
 -------------------
